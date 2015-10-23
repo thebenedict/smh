@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="employee-info">
+    <div class="headshot">
+      <%= image_tag("no-photo-lg.png") %>
+    </div>
+    <div class="employee-details">
+      <h1><%= @employee.full_name %></h1>
+      <div class="roles"><%= @employee.roles_list %></div>
+      <div class="row">
+        <div class="label">Availability:</div>
+        <div class="value"><%= @employee.availability_list %></div>
+      </div>
+      <div class="row">
+        <div class="label">Contact:</div>
+        <div class="value"><%= @employee.phone_list %></div>
+      </div>
+      <div class="row">
+        <div class="label">Preferred name:</div>
+        <div class="value"><%= @employee.common_name %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history">
+    <h2>Work history</h2>
+    <%= render @employee.employments %>
+  </div>
+</div>

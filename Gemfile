@@ -25,11 +25,13 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
+gem "devise"
 
 group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
+  gem "annotate"
 end
 
 group :development, :test do

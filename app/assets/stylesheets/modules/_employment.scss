@@ -1,0 +1,48 @@
+.employment {
+  @include fill-parent;
+  float: left;
+
+  margin-bottom: $base-spacing;
+  padding-bottom: $small-spacing;
+  border-bottom: 1px solid $light-gray;
+
+  &:last-child {
+    padding: 0;
+    border: none;
+  }
+
+  .header {
+    @include fill-parent;
+    float: left;
+    margin-bottom: $small-spacing;
+  }
+
+  .secondary { color: $medium-gray; }
+
+  .employer {
+    @include media($medium-screen-up) {
+      @include span-columns(6 of 12);
+      margin-bottom: 0;
+    }
+
+    @include fill-parent;
+    float: left;
+    margin-bottom: $small-spacing;
+  }
+
+  .duration {
+    @include media($medium-screen-up) {
+      @include span-columns(6 of 12);
+      text-align: right;
+    }
+
+    @include fill-parent;
+    float: left;
+  }
+
+  .employer-photo {
+    float: left;
+    margin-right: $small-spacing;
+    img { max-height: 70px; }
+  }
+}

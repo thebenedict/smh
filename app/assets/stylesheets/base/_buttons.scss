@@ -1,9 +1,10 @@
-#{$all-buttons} {
+$alt-button-color: $light-green;
+
+#{$all-buttons}, .button {
   appearance: none;
-  background-color: $action-color;
-  border: 0;
+  border: 2px solid $action-color;
   border-radius: $base-border-radius;
-  color: #fff;
+  color: $action-color;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
@@ -20,16 +21,25 @@
 
   &:hover,
   &:focus {
-    background-color: shade($action-color, 20%);
+    color: shade($action-color, 20%) !important;
+    border-color: shade($action-color, 20%);
     color: #fff;
   }
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+}
 
-    &:hover {
-      background-color: $action-color;
-    }
+.alt-button {
+  border: 2px solid $alt-button-color;
+  color: $alt-button-color;
+
+  &:hover,
+  &:focus {
+    color: shade($alt-button-color, 20%) !important;
+    border-color: shade($alt-button-color, 20%);
+    color: #fff;
   }
 }

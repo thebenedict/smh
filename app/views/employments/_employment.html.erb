@@ -1,0 +1,20 @@
+<%= div_for employment do %>
+  <div class="header">
+    <div class="employer">
+      <div class="employer-photo">
+        <%= image_tag "no-photo.png" %>
+      </div>
+      <div class="employer-details">
+        <div><%= employment.employer_name %></div>
+        <div class="secondary"><%= employment.employer_organization %></div>
+      </div>
+    </div>
+    <div class="duration">
+      <div><%= employment.date_range_string %></div>
+      <div class="secondary"><%= distance_of_time_in_words(employment.start_date, employment.end_date_or_now) %></div>
+    </div>
+  </div>
+  <div class="comments">
+    <%= employment.comments %>
+  </div>
+<% end %>

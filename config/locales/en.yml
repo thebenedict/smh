@@ -16,4 +16,7 @@ en:
         "%B %d"
 
   titles:
-    application: Smh
+    application: Staff my House
+    employees: 
+      index: "Employees | Staff my House"
+

@@ -1,0 +1,8 @@
+.content {
+  @include media($medium-screen-up) {
+    padding-top: $navigation-height + $base-spacing;
+  }
+
+  padding: $navigation-height + (2 *  $base-spacing) $base-spacing $base-spacing $base-spacing;
+  @include outer-container;
+}

@@ -1,0 +1,22 @@
+<% params['id'] == 'home' ? nav_class = 'top-nav' : nav_class = 'top-nav solid'  %>
+<div class="<%= nav_class %>">
+  <div class="inner">
+    <% if current_user %>
+      <ul class="menu">
+        <li>My staff</li>
+        <li><%=link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="menu">
+        <li>Sign up</li>
+        <li>About</li>
+        <li><%=link_to "Log in", new_user_session_path %></li>
+      </ul>
+    <% end %>
+
+    <%= link_to root_path do %>
+      <div class="logo"><h1>Staff my House</h1></div>
+      <%= image_tag "house.svg", class: "house" %>
+    <% end %>
+  </div>
+</div>

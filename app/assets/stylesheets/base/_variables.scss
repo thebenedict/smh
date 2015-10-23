@@ -1,6 +1,15 @@
 // Typography
-$base-font-family: $helvetica;
-$heading-font-family: $base-font-family;
+@import url(https://fonts.googleapis.com/css?family=Port+Lligat+Slab);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+$base-font-family: 'Open Sans', $helvetica;
+$heading-font-family: 'Josefin Slab', serif;
+$logo-font-family: 'Port Lligat Slab', serif;
+
+// $base-font-family: $helvetica;
+// $heading-font-family: serif;
+// $logo-font-family: serif;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -10,20 +19,27 @@ $base-line-height: 1.5;
 $heading-line-height: 1.2;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 6px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
+$navigation-height: 4.95em;
+
 // Colors
-$blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 
+$dark-orange: #DB732C;
+$light-orange: #FFB24C;
+$yellow: #FFEF93;
+$light-green: #CADA5A;
+$dark-green: #606332;
+
 // Font Colors
 $base-font-color: $dark-gray;
-$action-color: $blue;
+$action-color: $dark-orange;
 
 // Border
 $base-border-color: $light-gray;

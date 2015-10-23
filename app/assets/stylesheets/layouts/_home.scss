@@ -1,0 +1,22 @@
+.home-actions {
+  @include outer-container;
+
+  .action {
+    @include media($medium-screen-up) {
+      @include span-columns(2);
+    }
+
+    @include fill-parent;
+    float: left;
+    text-align: center;
+    padding-top: $base-spacing;
+
+    h3 {
+      font-size: $base-font-size * 1.8;
+    }
+  }
+
+  .button {
+    margin-bottom: $base-spacing;
+  } 
+}

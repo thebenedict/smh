@@ -1,0 +1,55 @@
+.employee {
+  margin-bottom: $base-spacing;
+  padding: $small-spacing;
+  text-align: center;
+
+  @include media($medium-viewport) {
+    @include span-columns(4 of 8);
+    @include omega(2n);
+  }
+
+  @include media($large-viewport) {
+    @include span-columns(4 of 12);
+    @include omega(3n);
+  }
+
+  @include fill-parent;
+  float: left;
+
+  h3 {
+    @include transition(all 0.1s ease-in-out);
+    font-size: $base-font-size * 1.2;
+    display: inline-block;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #fff;
+  }
+
+  img {
+    @include transition(all 0.2s ease-in-out);
+    border-radius: 50%;
+    border: 2px solid $medium-gray;
+    margin: 0 auto $small-spacing auto;
+    max-width: 125px;
+  }
+
+  .card-link {
+    @include fill-parent;
+    color: $dark-gray;
+    float: left;
+  }
+
+  .info {
+    font-size: $base-font-size;
+    color: $medium-gray;
+  }
+
+  &:hover {
+    img {
+      border: 2px solid $dark-orange;
+    }
+
+    h3 {
+      border-bottom: 1px solid $medium-gray;
+    }
+  }
+}

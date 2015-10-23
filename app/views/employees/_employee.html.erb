@@ -1,0 +1,11 @@
+<%= div_for employee do %>
+  <%= link_to employee, class: "card-link" do %>
+    <h3><%= employee.common_name %></h3>
+    <div class="employee-thumbnail">
+      <%= image_tag "no-photo.png" %>
+    </div>
+    <div class="info">
+      <div><%= employee.roles_list %></div>
+    </div>
+  <% end %>
+<% end %>
