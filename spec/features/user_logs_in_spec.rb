@@ -8,7 +8,7 @@ RSpec.feature "User logs in" do
   end
 
   scenario "they log in successfully" do
-    create(:user, email: "test@test.com", password: "testing123",
+    user = create(:user, email: "test@test.com", password: "testing123",
       password_confirmation: "testing123", confirmed_at: DateTime.now)
 
     visit root_path
@@ -21,5 +21,6 @@ RSpec.feature "User logs in" do
 
     expect(page).to have_css("div.flash-notice", text: "Signed in successfully.")
     expect(page).to have_link("Log out", href: destroy_user_session_path)
+    expect(page).to have_css("li", text: user.employer.first_name)
   end
 end

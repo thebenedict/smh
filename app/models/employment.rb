@@ -13,8 +13,12 @@
 #
 
 class Employment < ActiveRecord::Base
+  default_scope { order(start_date: :desc) }
+  
   belongs_to :employer
   belongs_to :employee
+
+  after_initialize :set_start_date
 
   def employer_name
     employer.full_name
@@ -22,6 +26,10 @@ class Employment < ActiveRecord::Base
 
   def employer_organization
     employer.organization
+  end
+
+  def employee_full_name
+    employee.full_name
   end
 
   def date_range_string
@@ -39,5 +47,9 @@ class Employment < ActiveRecord::Base
       else
         str = "present"
       end
+    end
+
+    def set_start_date
+      self.start_date = Date.today if start_date.blank?
     end
 end

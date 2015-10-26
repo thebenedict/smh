@@ -25,6 +25,9 @@
 
 FactoryGirl.define do
   factory :user do
-    
+    sequence(:email) { |n| "user#{n}@example.com" }
+    sequence(:password) { |n| "pass#{n * 100}" }
+    sequence(:password_confirmation) { |n| "pass#{n * 100}" }
+    confirmed_at = Time.now
   end
 end

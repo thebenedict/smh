@@ -29,4 +29,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :lockable,
          :validatable, :timeoutable
+
+  has_one :employer, inverse_of: :user
+  accepts_nested_attributes_for :employer
+
+  before_save { build_employer unless employer }
 end

@@ -5,6 +5,7 @@ $alt-button-color: $light-green;
   border: 2px solid $action-color;
   border-radius: $base-border-radius;
   color: $action-color;
+  background-color: white;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
@@ -29,6 +30,11 @@ $alt-button-color: $light-green;
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &.small {
+    padding: 0.5em 1em;
+    font-size: 85%;
   }
 }
 

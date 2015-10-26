@@ -6,7 +6,7 @@ if Rails.env.development? || Rails.env.test?
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
 
-      create(:user,
+      michael = create(:user,
         email: "thebenedict@gmail.com",
         password: "staffmyhouse",
         password_confirmation: "staffmyhouse",
@@ -28,10 +28,11 @@ if Rails.env.development? || Rails.env.test?
         organization: "U.S. Embassy"
       )
 
-      michael = create(:employer,
+      michael_employer = create(:employer,
         first_name: "Michael",
         other_names: "Benedict",
-        organization: "Kept Man"
+        organization: "Kept Man",
+        user_id: michael.id
       )
 
       irini.employments.create(employer_id: susna.id,

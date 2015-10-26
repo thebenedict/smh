@@ -15,5 +15,9 @@
 require 'rails_helper'
 
 RSpec.describe Employment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has its start date set on initialize" do
+    employment = build(:employment)
+    
+    expect(employment.start_date).to eq(Date.today)
+  end
 end

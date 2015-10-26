@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20151022193724) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "employers", ["user_id"], name: "index_employers_on_user_id", using: :btree
+
   create_table "employments", force: :cascade do |t|
     t.integer  "employee_id"
     t.integer  "employer_id"
@@ -92,4 +94,5 @@ ActiveRecord::Schema.define(version: 20151022193724) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "employers", "users"
 end

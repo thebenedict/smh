@@ -88,3 +88,30 @@ select {
   max-width: 100%;
   width: auto;
 }
+
+// simpleform overrides and additions
+
+.simple_form {
+  input { margin-bottom: 0.1em; }
+  div.input { margin-bottom: $base-spacing; }
+
+  span.hint {
+    font-size: 90%;
+    color: $medium-gray;
+  }
+
+  .required::after {
+    color: $medium-gray;
+  }
+
+  span.error {
+    color: $dark-orange;
+    display: block; //on a separate line from span.hint
+    font-size: 90%;
+  }
+
+  div.error_notification {
+    margin-bottom: $small-spacing;
+    color: $dark-orange;
+  }
+}

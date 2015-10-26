@@ -24,14 +24,11 @@
   }
 
   .logo {
-    font-size: $base-font-size * 1.6;
+    font-size: $base-font-size * 1.5;
     display: inline-block;
-
-    h1 {
-      font-family: $logo-font-family;
-      margin-bottom: 0;
-      color: $dark-gray;
-    }
+    font-family: $logo-font-family;
+    color: $dark-gray;
+    line-height: 1.3em;
   }
 
   .house {
@@ -43,6 +40,8 @@
   }
 
   .menu {
+    $image-height: 31px;
+
     @include media ($expanded-state) {
       float: right;
       display: inline-block;
@@ -65,11 +64,20 @@
       line-height: 1.3em;
       cursor: pointer;
       border-right: 1px solid $medium-gray;
+      vertical-align: middle;
+      line-height: $image-height +2px;
 
       &:last-child { 
         padding-right: 0;
         border-right: 0;
       }
+    }
+
+    img { 
+      max-height: $image-height;
+      margin-right: 0.25em;
+      vertical-align: middle;
+      border: 1px solid $medium-gray;
     }
   }
 }

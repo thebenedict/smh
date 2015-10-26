@@ -15,6 +15,12 @@ class Employer < ActiveRecord::Base
   has_many :employments
   has_many :employees, through: :employments
 
+  belongs_to :user, inverse_of: :employer;
+
+  validates :user, presence: true
+  validates :first_name, presence: true
+  validates :other_names, presence: true
+
   def full_name
     [first_name, other_names].compact.join(" ")
   end

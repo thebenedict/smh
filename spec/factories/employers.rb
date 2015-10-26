@@ -14,9 +14,8 @@
 FactoryGirl.define do
   factory :employer do
     first_name "MyString"
-other_names "MyString"
-organization "MyString"
-user_id 1
+    other_names "MyString"
+    organization "MyString"
+    user
   end
-
 end

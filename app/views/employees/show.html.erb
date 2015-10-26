@@ -22,7 +22,14 @@
   </div>
 
   <div class="history">
-    <h2>Work history</h2>
+    <div class="top">
+      <div class="label"><h2>Work history</h2></div>
+      <% if current_user.present? && !current_employer.employees.include?(@employee) %>
+        <div class="employ">
+          <%= link_to "I've employed #{@employee.common_name}", employments_path(employee_id: @employee.id), method: :post %>
+        </div>
+      <% end %>
+    </div>
     <%= render @employee.employments %>
   </div>
 </div>

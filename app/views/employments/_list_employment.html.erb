@@ -1,0 +1,9 @@
+<%= div_for employment, class: "list-item" do %>
+  <div class="section name">
+    <%= image_tag "no-photo.png" %><%= employment.employee_full_name %>
+  </div>
+  <div class="section duration"><%= employment.date_range_string %></div>
+  <div class="section actions">
+    <%= link_to "Update", "javascript:void(0)", class: "small button" %>
+  </div>
+<% end %>

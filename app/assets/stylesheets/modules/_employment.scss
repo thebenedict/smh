@@ -45,4 +45,37 @@
     margin-right: $small-spacing;
     img { max-height: 70px; }
   }
+
+  &.list-item {
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: $small-spacing;
+    margin-bottom: $small-spacing;
+
+    &:last-child { border-bottom: none; }
+
+    img {
+      height: 45px;
+      width: 45px;
+      border: 1px solid $medium-gray;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: $small-spacing;
+    }
+
+    .section {
+      @include media($large-screen-up) {
+        @include span-columns(4 of 12);
+        text-align: left;
+        &.actions { 
+          text-align: right;
+        }
+      }
+
+      @include fill-parent;
+      float: left;
+      line-height: 45px;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
 }
