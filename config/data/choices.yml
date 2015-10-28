@@ -1,0 +1,23 @@
+ROLES:
+  - 'Cook'
+  - 'Driver'
+  - 'Gardener'
+  - 'Housekeeper'
+  - 'Nanny'
+AVAILABILITY:
+  - 'Full time'
+  - 'Part time'
+  - 'Events'
+ENGLISH:
+  -
+    - 'None'
+    - 0
+  - 
+    - 'Basic'
+    - 1
+  -
+    - 'Good'
+    - 2
+  -
+    - 'Excellent'
+    - 3

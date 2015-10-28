@@ -18,5 +18,30 @@
   }
 
   @include fill-parent;
-  float: left;  
+  float: left;
+
+  &.wide {
+    @include media($large-screen-up) {
+      @include span-columns(6 of 12);
+      @include shift(3);
+    }
+
+    @include media($medium-screen) {
+      @include span-columns(6 of 8);
+      @include shift(1);
+    }    
+  }
+
+  .employment_start_date, .employment_end_date { 
+    width: 50%;
+    float: left;
+
+    select { 
+      display: inline;
+      margin-right: $small-spacing;
+      margin-bottom: $small-spacing;
+    }
+
+    .hint { display: block; }
+  }
 }

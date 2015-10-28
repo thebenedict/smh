@@ -32,4 +32,19 @@ RSpec.feature "employer manages employees" do
     end
     expect(page).to have_css("div.employment")    
   end
+
+  scenario "they update employment dates" do
+    employment = create(:employment)
+    employment.employer.user.update(confirmed_at: Time.now)
+    login_as(employment.employer.user)
+
+    visit(employments_path)
+    within "div.employment" do
+      click_link("Update")
+    end
+    fill_in("Employer recommendation", with: "Great jorb!")
+    click_on("Update")
+
+    expect(employment.reload.comments).to eq("Great jorb!")
+  end
 end

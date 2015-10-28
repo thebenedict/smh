@@ -1,0 +1,40 @@
+<%= simple_form_for @employee do |f| %>
+  <div class="form-inputs">
+    <%= f.input :full_name %>
+    <%= f.input :common_name, label: "Preferred name",
+      hint: "What name does this person go by at work?" %>
+    <%= f.input :primary_phone %>
+    <%= f.input :alternate_phone %>
+    <%= f.input :roles, as: :check_boxes, 
+      collection: Employee::CHOICES['ROLES'], include_hidden: false,
+      input_html: { multiple: true} %>
+    <%= f.input :availability, as: :check_boxes, 
+      collection: Employee::CHOICES['AVAILABILITY'],
+      input_html: { multiple: true}, 
+      checked: ["Full time", "Part time", "Events"],
+      hint: 'Select "Events" if the employee would like to be contacted about short term assignments, e.g. a dinner party or weekend road trip' %>
+    <%= f.input :english_proficiency, as: :radio_buttons,
+      collection: Employee::CHOICES['ENGLISH'],
+      checked: 1 %>
+    <% if !@employee.persisted? %>
+      <%= f.simple_fields_for :employments do |e| %>
+        <%= e.input :start_date, as: :date, required: true,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true %>
+        <%= e.input :end_date, as: :date,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true, include_blank: true,
+          hint: "leave blank if you currently employ this person" %>
+        <%= e.input :comments, label: "Employer recommendation" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <% if @employee.persisted? %>
+      <%= f.button :submit, "Update" %>
+    <% else %>
+      <%= f.button :submit, "Save" %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="content">
+  <div class="form-wrapper wide">
+    <h1>Update employment details: <%= @employment.employee_full_name %></h1>
+    <p>Make sure to leave a recommendation for <%= "#{@employment.employee.common_name}" %> once you've worked together for a while.</p>
+    <%= simple_form_for @employment do |f| %>
+      <div class="form-inputs">
+        <%= f.input :start_date, as: :date, required: true,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true %>
+        <%= f.input :end_date, as: :date, required: true,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true, include_blank: true,
+          hint: "leave blank if you currently employ this person" %>
+        <%= f.input :comments, label: "Employer recommendation" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+      </div>
+    <% end %>
+  </div>
+</div>

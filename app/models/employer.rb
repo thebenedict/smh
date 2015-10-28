@@ -12,7 +12,7 @@
 #
 
 class Employer < ActiveRecord::Base
-  has_many :employments
+  has_many :employments, inverse_of: :employer
   has_many :employees, through: :employments
 
   belongs_to :user, inverse_of: :employer;

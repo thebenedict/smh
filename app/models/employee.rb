@@ -15,8 +15,12 @@
 #
 
 class Employee < ActiveRecord::Base
-  has_many :employments
+  CHOICES = YAML.load_file("#{Rails.root}/config/data/choices.yml")
+
+  has_many :employments, inverse_of: :employee
   has_many :employers, through: :employments
+
+  accepts_nested_attributes_for :employments
 
   LIST_SEPARATOR = " / "
 
@@ -29,6 +33,6 @@ class Employee < ActiveRecord::Base
   end
 
   def phone_list
-    [primary_phone, alternate_phone].compact.join(LIST_SEPARATOR)
+    [primary_phone, alternate_phone].reject { |p| p.blank? }.join(LIST_SEPARATOR)
   end
 end

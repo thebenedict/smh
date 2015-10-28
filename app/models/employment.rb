@@ -15,8 +15,11 @@
 class Employment < ActiveRecord::Base
   default_scope { order(start_date: :desc) }
   
-  belongs_to :employer
-  belongs_to :employee
+  belongs_to :employer, inverse_of: :employments
+  belongs_to :employee, inverse_of: :employments
+
+  validates :employer, presence: true
+  validates :employee, presence: true
 
   after_initialize :set_start_date
 
