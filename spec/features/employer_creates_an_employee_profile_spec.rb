@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "employer creates an employee profile" do
   scenario "they view the employee form" do
-    employer = create(:employer, first_name: "Jane", other_names: "Employerton")
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
     employer.user.confirm
     login_as(employer.user)
 
@@ -13,7 +13,7 @@ RSpec.feature "employer creates an employee profile" do
   end
 
   scenario "they create an employee" do
-    employer = create(:employer, first_name: "Jane", other_names: "Employerton")
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
     employer.user.confirm
     login_as(employer.user)
 

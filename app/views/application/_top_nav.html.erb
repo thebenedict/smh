@@ -4,7 +4,7 @@
     <% if current_user %>
       <ul class="menu">
         <li>
-          <%= image_tag "no-photo.png" %>
+          <%= image_tag current_employer.avatar_url %>
           <%=current_user.employer.first_name %>
         </li>
         <li><%= link_to "My staff", employments_path %></li>

@@ -4,6 +4,7 @@
   </div>
   <div class="section duration"><%= employment.date_range_string %></div>
   <div class="section actions">
+    <%= link_to "View", employee_path(employment.employee), class: "small button" %>
     <%= link_to "Update", edit_employment_path(employment), class: "small button" %>
   </div>
 <% end %>

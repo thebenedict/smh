@@ -2,13 +2,14 @@
 #
 # Table name: employers
 #
-#  id           :integer          not null, primary key
-#  first_name   :string
-#  other_names  :string
-#  organization :string
-#  user_id      :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                :integer          not null, primary key
+#  first_name        :string
+#  full_name         :string
+#  organization      :string
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  hosted_avatar_url :string
 #
 
 class Employer < ActiveRecord::Base
@@ -19,9 +20,9 @@ class Employer < ActiveRecord::Base
 
   validates :user, presence: true
   validates :first_name, presence: true
-  validates :other_names, presence: true
+  validates :full_name, presence: true
 
-  def full_name
-    [first_name, other_names].compact.join(" ")
+  def avatar_url
+    hosted_avatar_url
   end
 end

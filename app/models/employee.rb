@@ -16,6 +16,7 @@
 
 class Employee < ActiveRecord::Base
   CHOICES = YAML.load_file("#{Rails.root}/config/data/choices.yml")
+  enum english_proficiency: [:basic, :good, :excellent]
 
   has_many :employments, inverse_of: :employee
   has_many :employers, through: :employments

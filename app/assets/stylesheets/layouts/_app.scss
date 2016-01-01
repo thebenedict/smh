@@ -1,8 +1,18 @@
 .content {
+  @include fill-parent;
+
   @include media($medium-screen-up) {
-    padding-top: $navigation-height + $base-spacing;
+    padding-top: $navigation-height + 1.5 * $base-spacing;
   }
 
-  padding: $navigation-height + (2 *  $base-spacing) $base-spacing $base-spacing $base-spacing;
+  padding: $navigation-height + (2.5 *  $base-spacing) $base-spacing $base-spacing $base-spacing;
   @include outer-container;
+
+  &.narrow {
+    @include media($large-screen) {
+      @include span-columns(6 of 12);
+      @include shift(3);
+    }
+  }
 }
+

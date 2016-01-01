@@ -1,7 +1,7 @@
 RSpec.feature "employer manages employees" do
   scenario "they identify as an employer" do
     employee = create(:employee)
-    employer = create(:employer, first_name: "Jane", other_names: "Employerton")
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
     employer.user.update(confirmed_at: Time.now)
     login_as(employer.user)
 
@@ -31,6 +31,18 @@ RSpec.feature "employer manages employees" do
       click_link("My staff")
     end
     expect(page).to have_css("div.employment")    
+  end
+
+  scenario "if new user, they see welcome text with next steps" do
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
+    employer.user.confirm
+    login_as(employer.user)
+    visit root_path
+
+    within "div.top-nav" do
+      click_link("My staff")
+    end
+    expect(page).to have_css("h1", text: "Welcome")    
   end
 
   scenario "they update employment dates" do

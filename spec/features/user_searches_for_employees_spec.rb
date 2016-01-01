@@ -18,7 +18,7 @@ RSpec.feature "User searches for employees" do
 
   scenario "they see an employees work history" do
     employee = create(:employee)
-    employer = create(:employer, first_name: "Jane", other_names: "Employerton")
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
     employer.employments.create(employee_id: employee.id, start_date: Date.today)
     
     visit employee_path(employee)

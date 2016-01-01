@@ -2,13 +2,14 @@
 #
 # Table name: employers
 #
-#  id           :integer          not null, primary key
-#  first_name   :string
-#  other_names  :string
-#  organization :string
-#  user_id      :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                :integer          not null, primary key
+#  first_name        :string
+#  full_name         :string
+#  organization      :string
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  hosted_avatar_url :string
 #
 
 require 'rails_helper'

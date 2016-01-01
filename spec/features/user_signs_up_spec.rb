@@ -12,7 +12,7 @@ RSpec.describe "user signs up" do
     click_link("Sign up")
 
     fill_in("First name", with: "Joe")
-    fill_in("user_employer_attributes_other_names", with: "Testuser")
+    fill_in("user_employer_attributes_full_name", with: "Joe Testuser")
     fill_in("Organization", with: "U.S. Embassy")
     fill_in("Email", with: "test@user.com")
     fill_in("user_password", with: "mypassword123")

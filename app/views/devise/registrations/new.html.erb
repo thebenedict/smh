@@ -10,7 +10,7 @@
       <div class="form-inputs">
         <%= f.simple_fields_for :employer do |e| %>
           <%= e.input :first_name %>
-          <%= e.input :other_names, label: "Last name/other names" %>
+          <%= e.input :full_name, hint: "This name will appear on your employee references" %>
           <%= e.input :organization %>
         <% end %>
 

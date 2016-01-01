@@ -14,8 +14,9 @@
       checked: ["Full time", "Part time", "Events"],
       hint: 'Select "Events" if the employee would like to be contacted about short term assignments, e.g. a dinner party or weekend road trip' %>
     <%= f.input :english_proficiency, as: :radio_buttons,
-      collection: Employee::CHOICES['ENGLISH'],
-      checked: 1 %>
+      collection: Employee.english_proficiencies.keys.to_a,
+      label_method: :humanize
+    %>
     <% if !@employee.persisted? %>
       <%= f.simple_fields_for :employments do |e| %>
         <%= e.input :start_date, as: :date, required: true,

@@ -34,4 +34,28 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :employer
 
   before_save { build_employer unless employer }
+
+  def self.find_or_create_from_auth_hash(auth_hash)
+    user = User.find_by_email(auth_hash['info']['email'])
+
+    user = User.create_from_auth_hash(auth_hash) unless user.present?
+    
+    return user
+  end
+
+  def self.create_from_auth_hash(auth_hash)
+    user = User.create(
+      email: auth_hash['info']['email'],
+      password: Devise.friendly_token[0,20]
+    )
+
+    user.employer.update(
+      first_name: auth_hash['info']['first_name'],
+      full_name: auth_hash['info']['name'],
+      hosted_avatar_url: auth_hash['info']['image']
+    )
+
+    user.confirm
+    return user
+  end
 end
