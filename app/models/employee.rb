@@ -12,6 +12,10 @@
 #  english_proficiency :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class Employee < ActiveRecord::Base
@@ -20,6 +24,12 @@ class Employee < ActiveRecord::Base
 
   has_many :employments, inverse_of: :employee
   has_many :employers, through: :employments
+
+  has_attached_file :avatar,
+    styles: { medium: "165x165#", thumb: "50x50#" },
+    default_url: "no-photo.png"
+     
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   accepts_nested_attributes_for :employments
 

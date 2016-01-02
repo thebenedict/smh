@@ -3,6 +3,7 @@
     <%= f.input :full_name %>
     <%= f.input :common_name, label: "Preferred name",
       hint: "What name does this person go by at work?" %>
+    <%= f.input :avatar, as: :file, label: "Profile photo" %>
     <%= f.input :primary_phone %>
     <%= f.input :alternate_phone %>
     <%= f.input :roles, as: :check_boxes, 

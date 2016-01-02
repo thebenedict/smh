@@ -1,7 +1,7 @@
 <div class="content">
   <div class="employee-info">
     <div class="headshot">
-      <%= image_tag("no-photo-lg.png") %>
+      <%= image_tag @employee.avatar.url(:medium) %>
     </div>
     <div class="employee-details">
       <h1><%= @employee.full_name %></h1>

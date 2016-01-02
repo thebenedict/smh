@@ -28,6 +28,8 @@ gem "uglifier"
 gem "devise"
 gem "administrate"
 gem "omniauth-facebook"
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '>= 2.0.0'
 
 group :development do
   gem "spring"
