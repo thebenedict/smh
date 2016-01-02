@@ -2,7 +2,7 @@ RSpec.feature "employer manages employees" do
   scenario "they identify as an employer" do
     employee = create(:employee)
     employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
-    employer.user.update(confirmed_at: Time.now)
+    employer.user.confirm
     login_as(employer.user)
 
     visit employee_path(employee)
@@ -14,7 +14,7 @@ RSpec.feature "employer manages employees" do
 
   scenario "they view the profile of an employee" do
     employment = create(:employment)
-    employment.employer.user.update(confirmed_at: Time.now)
+    employment.employer.user.confirm
     login_as(employment.employer.user)
 
     visit employee_path(employment.employee)
@@ -23,7 +23,7 @@ RSpec.feature "employer manages employees" do
 
   scenario "they view their current employees" do
     employment = create(:employment)
-    employment.employer.user.update(confirmed_at: Time.now)
+    employment.employer.user.confirm
     login_as(employment.employer.user)
     visit root_path
 
@@ -45,9 +45,28 @@ RSpec.feature "employer manages employees" do
     expect(page).to have_css("h1", text: "Welcome")    
   end
 
+  scenario "they update profile details for a current employee" do
+    employment = create(:employment)
+    employment.employer.user.confirm
+    login_as(employment.employer.user)
+    employee = employment.employee
+    employee.update(primary_phone: "5551212")
+
+    visit(employments_path)
+    within "div.employment" do
+      click_link("Update")
+    end
+
+    fill_in("Primary phone", with: "4441212")
+    click_on("Update")
+
+    expect(employee.reload.primary_phone).to eq("4441212")
+  end
+
+
   scenario "they update employment dates" do
     employment = create(:employment)
-    employment.employer.user.update(confirmed_at: Time.now)
+    employment.employer.user.confirm
     login_as(employment.employer.user)
 
     visit(employments_path)

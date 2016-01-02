@@ -46,4 +46,9 @@ class Employee < ActiveRecord::Base
   def phone_list
     [primary_phone, alternate_phone].reject { |p| p.blank? }.join(LIST_SEPARATOR)
   end
+
+  def employment_by(employer)
+    self.employments.find_or_initialize_by(employer_id: employer.id)
+    self.employments.where(employer_id: employer.id)
+  end
 end

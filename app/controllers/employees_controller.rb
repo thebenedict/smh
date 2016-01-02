@@ -9,12 +9,21 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
-    @employee.employments.build
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    @employee.update(employee_params)
+    redirect_to employments_path, notice: "Update successful"
   end
 
   def create
     @employee = Employee.new(employee_params)
-    @employee.employments.first.employer = current_employer
+    @employee.employments.first_or_initialize(employer: current_employer)
     if @employee.save
       flash.notice = "New employee created"
       redirect_to employments_path
@@ -27,6 +36,6 @@ class EmployeesController < ApplicationController
     def employee_params
       params.require(:employee).permit(:full_name, :common_name, :avatar,
         :primary_phone, :alternate_phone, :english_proficiency, :roles => [],
-        :availability => [], :employments_attributes => [:start_date, :end_date, :comments])
+        :availability => [], :employments_attributes => [:id, :start_date, :end_date, :comments])
     end
 end
