@@ -2,7 +2,7 @@
   <%= link_to employee, class: "card-link" do %>
     <h3><%= employee.common_name %></h3>
     <div class="employee-thumbnail">
-      <%= image_tag "no-photo.png" %>
+      <%= image_tag employee.avatar.url(:medium) %>
     </div>
     <div class="info">
       <div><%= employee.roles_list %></div>

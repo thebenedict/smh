@@ -1,0 +1,12 @@
+<%= simple_form_for @employer do |f| %>
+  <div class="form-inputs">
+    <%= f.input :full_name, hint: "Your name as it'll appear on your employee references" %>
+    <%= f.input :first_name, hint: "This is how we'll greet you" %>
+    <%= f.input :submitted_avatar, as: :file, label: "Profile photo" %>
+    <%= f.input :organization %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save" %>
+  </div>
+<% end %>

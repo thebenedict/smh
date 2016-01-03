@@ -49,3 +49,16 @@ $alt-button-color: $light-green;
     color: #fff;
   }
 }
+
+.facebook-button {
+  border: 2px solid $facebook-blue;
+  color: lighten($facebook-blue, 10);
+  background-color: lighten($facebook-light-blue, 10);
+  
+  &:hover,
+  &:focus {
+    color: $facebook-blue !important;
+    border-color: $facebook-blue;
+    color: #fff;
+  }
+}

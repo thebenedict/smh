@@ -1,11 +1,11 @@
 <div class="content">
-  <div class="employee-info">
-    <div class="headshot">
+  <div class="personal-info">
+    <div class="headshot employee">
       <%= image_tag @employee.avatar.url(:medium) %>
     </div>
-    <div class="employee-details">
+    <div class="personal-details">
       <h1><%= @employee.full_name %></h1>
-      <div class="roles"><%= @employee.roles_list %></div>
+      <div class="sub"><%= @employee.roles_list %></div>
       <div class="row">
         <div class="label">Availability:</div>
         <div class="value"><%= @employee.availability_list %></div>

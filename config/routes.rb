@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
@@ -14,4 +13,5 @@ Rails.application.routes.draw do
 
   resources :employees, except: :destroy
   resources :employments, except: :destroy
+  resources :employers, only: [:show, :edit, :update]
 end

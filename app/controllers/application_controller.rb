@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
     current_user.employer
   end
 
+  def require_facebook_auth
+    if !user_signed_in?
+      flash.notice = "Please sign in to view or post employee profiles"
+      redirect_to root_path
+    end
+  end
+
   def after_sign_in_path_for(resource)
     employments_path
   end

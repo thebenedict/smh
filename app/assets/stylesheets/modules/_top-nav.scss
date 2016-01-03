@@ -9,11 +9,8 @@
   top: 0;
   left: 0;
   text-align: center;
-
-  &.solid { 
-    background: $yellow;
-    border-bottom: 1px solid $light-gray;
-  }
+  background: $yellow;
+  border-bottom: 1px solid $light-gray;
 
   .inner {
     @include media($expanded-state) {
@@ -54,7 +51,7 @@
     @include fill-parent;
     background: $light-green;
     padding: $small-spacing;
-    margin-bottom: $small-spacing;
+    margin-bottom: $base-spacing;
 
     a { color: $dark-gray; }
 
@@ -78,6 +75,21 @@
       margin-right: 0.25em;
       vertical-align: middle;
       border: 1px solid $medium-gray;
+    }
+  }
+
+  &.light {
+    background: none;
+    border: none;
+
+    a { color: white;}
+    
+    .logo { color: white; }
+
+    li { border-right: 1px solid $light-gray; }
+
+    .menu {
+      img { border: 1px solid $light-gray; }      
     }
   }
 }

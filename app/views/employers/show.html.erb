@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="personal-info">
+    <div class="headshot">
+      <%= image_tag @employer.avatar_url %>
+    </div>
+    <div class="personal-details">
+      <h1><%= @employer.full_name %></h1>
+      <div class="sub"><%= @employer.organization_display %></div>
+      <div class="row">
+        <div class="label">Email:</div>
+        <div class="value"><%= @employer.user.email %></div>
+      </div>
+      <div class="row">
+        <div class="label">Registered:</div>
+        <div class="value"><%= @employer.created_at.strftime("%B, %Y") %></div>
+      </div>
+    </div>
+  </div>
+  <div>
+
+  <div class="actions">
+    <%= link_to "Edit", edit_employer_path(@employer), class: "button" %>
+  </div>
+</div>

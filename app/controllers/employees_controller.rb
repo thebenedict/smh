@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+  before_action :require_facebook_auth
+
   def index
     @employees = Employee.all
   end

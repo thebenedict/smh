@@ -1,4 +1,4 @@
-.employee-info {
+.personal-info {
   @include fill-parent;
   float: left;
 
@@ -8,7 +8,7 @@
     margin-bottom: 0;
   }
 
-  .roles {
+  .sub {
     margin-bottom: $small-spacing;
     color: $medium-gray;
   }
@@ -25,12 +25,15 @@
 
     img {
       border: 1px solid $medium-gray;
-      border-radius: 50%;
       max-height: 10.2rem;
+    }
+
+    &.employee {
+      img { border-radius: 50%; }
     }
   }
 
-  .employee-details {
+  .personal-details {
     @include media($large-viewport) {
       @include span-columns(9 of 12);
       padding-left: $base-spacing;

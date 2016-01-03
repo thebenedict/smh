@@ -4,6 +4,12 @@ $error-color: #fbe3e4 !default;
 $notice-color: #e5edf8 !default;
 $success-color: #e6efc2 !default;
 
+.flashes {
+  @include fill-parent;
+  float: left;
+  height: $base-spacing * 6;
+}
+
 @mixin flash($color) {
   position: absolute;
   top: $navigation-height;
