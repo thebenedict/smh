@@ -22,6 +22,7 @@ gem "recipient_interceptor"
 gem "refills"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
+gem 'sprockets-rails', '2.3.3'
 gem "title"
 gem "uglifier"
 gem "devise"
