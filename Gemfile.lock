@@ -60,9 +60,6 @@ GEM
       rails (~> 4.2)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
-    airbrake (5.0.2)
-      airbrake-ruby (~> 1.0)
-    airbrake-ruby (1.0.2)
     annotate (2.7.0)
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
@@ -351,7 +348,6 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
-  airbrake
   annotate
   autoprefixer-rails
   awesome_print
