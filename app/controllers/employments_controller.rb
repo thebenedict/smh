@@ -1,12 +1,8 @@
 class EmploymentsController < ApplicationController
-  def index
-    @employments = current_employer.employments
-  end
-
   def create
     employee = Employee.find(params[:employee_id])
-    current_employer.employments.create!(employee_id: employee.id)
-    redirect_to employments_path, notice: "You now employ #{employee.common_name}"
+    current_employer.employments.find_or_create_by(employee_id: employee.id)
+    redirect_to employer_path(current_employer), notice: "You now employ #{employee.common_name}"
   end
 
   private

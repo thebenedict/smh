@@ -9,7 +9,7 @@ RSpec.feature "employer manages employees" do
     click_link("I've employed #{employee.common_name}")
 
     expect(employer.employees).to include(employee)
-    expect(page).to have_css("h1", text: "My staff")
+    expect(page).to have_css("h2", text: "My staff")
   end
 
   scenario "they view the profile of an employee" do
@@ -28,7 +28,7 @@ RSpec.feature "employer manages employees" do
     visit root_path
 
     within "div.top-nav" do
-      click_link("My staff")
+      click_link(employment.employer.first_name)
     end
     expect(page).to have_css("div.employment")    
   end
@@ -40,7 +40,7 @@ RSpec.feature "employer manages employees" do
     visit root_path
 
     within "div.top-nav" do
-      click_link("My staff")
+      click_link("Jane")
     end
     expect(page).to have_css("h1", text: "Welcome")    
   end
@@ -52,7 +52,7 @@ RSpec.feature "employer manages employees" do
     employee = employment.employee
     employee.update(primary_phone: "5551212")
 
-    visit(employments_path)
+    visit(employer_path(employment.employer))
     within "div.employment" do
       click_link("Update")
     end
@@ -69,7 +69,7 @@ RSpec.feature "employer manages employees" do
     employment.employer.user.confirm
     login_as(employment.employer.user)
 
-    visit(employments_path)
+    visit(employer_path(employment.employer))
     within "div.employment" do
       click_link("Update")
     end

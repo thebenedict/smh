@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    employments_path
+    if resource.sign_in_count == 1
+      edit_employer_path(resource)
+    else
+      employer_path(resource)
+    end
   end
 
   protected

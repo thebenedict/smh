@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'sessions#auth_failure'
 
   resources :employees, except: :destroy
-  resources :employments, except: :destroy
+  resources :employments, except: [:index, :destroy]
   resources :employers, only: [:show, :edit, :update]
 end

@@ -44,10 +44,12 @@ class User < ActiveRecord::Base
   end
 
   def self.create_from_auth_hash(auth_hash)
-    user = User.create(
+    user = User.new(
       email: auth_hash['info']['email'],
       password: Devise.friendly_token[0,20]
     )
+    user.skip_confirmation!
+    user.save
 
     user.employer.update(
       first_name: auth_hash['info']['first_name'],
@@ -55,7 +57,6 @@ class User < ActiveRecord::Base
       hosted_avatar_url: auth_hash['info']['image']
     )
 
-    user.confirm
     return user
   end
 end

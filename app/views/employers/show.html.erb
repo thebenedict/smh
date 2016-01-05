@@ -1,24 +1,44 @@
-<div class="content">
+<% if current_employer.employments.present? %>
+  <div class="content">
+<% else %>
+  <div class="content narrow">
+    <div class="welcome-actions">
+      <h1>Welcome <%= current_employer.first_name %>!</h1>
+
+      <p>You're ready to get started. Once you have some employees they'll appear on this page. You can get back here any time by
+      clicking on your name in the menu above.</p>
+      <p>If you're looking for staff:</p>
+      <p><%= link_to "Search and hire", employees_path, class: "button" %></p>
+
+      <p>If you want to help a current employee find their next job, post a new employee profile and add your recommendation:</p> 
+      <p><%= link_to "Post a profile", new_employee_path, class: "button alt-button" %></p>
+    </div>
+<% end %>
+
   <div class="personal-info">
     <div class="headshot">
-      <%= image_tag @employer.avatar_url %>
+      <%= image_tag current_employer.avatar_url %>
     </div>
     <div class="personal-details">
-      <h1><%= @employer.full_name %></h1>
-      <div class="sub"><%= @employer.organization_display %></div>
+      <h1><%= current_employer.full_name %></h1>
+      <div class="sub"><%= current_employer.organization_display %></div>
       <div class="row">
         <div class="label">Email:</div>
-        <div class="value"><%= @employer.user.email %></div>
+        <div class="value"><%= current_employer.user.email %></div>
       </div>
       <div class="row">
         <div class="label">Registered:</div>
-        <div class="value"><%= @employer.created_at.strftime("%B, %Y") %></div>
+        <div class="value"><%= current_employer.created_at.strftime("%B, %Y") %></div>
       </div>
     </div>
-  </div>
-  <div>
 
-  <div class="actions">
-    <%= link_to "Edit", edit_employer_path(@employer), class: "button" %>
+    <div class="actions">
+      <%= link_to "Edit", edit_employer_path(current_employer), class: "button small" %>
+    </div>
+  </div>
+
+  <div class="history">
+    <h2>My staff</h2>
+    <%= render partial: "employments/list_employment", collection: current_employer.employments, as: "employment" %>
   </div>
 </div>

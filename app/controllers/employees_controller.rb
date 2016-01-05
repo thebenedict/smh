@@ -20,7 +20,7 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     @employee.update(employee_params)
-    redirect_to employments_path, notice: "Update successful"
+    redirect_to current_employer, notice: "Update successful"
   end
 
   def create
@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
     @employee.employments.first_or_initialize(employer: current_employer)
     if @employee.save
       flash.notice = "New employee created"
-      redirect_to employments_path
+      redirect_to current_employer
     else
       render "new"
     end

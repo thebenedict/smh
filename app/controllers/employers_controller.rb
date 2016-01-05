@@ -2,7 +2,6 @@ class EmployersController < ApplicationController
   before_action :require_facebook_auth
 
   def show
-    @employer = current_employer
   end
 
   def edit
