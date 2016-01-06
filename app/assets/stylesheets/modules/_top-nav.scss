@@ -3,6 +3,7 @@
 
   @include media($expanded-state) {
     text-align: left;
+    text-shadow: 1px 1px 1px lighten($yellow, 10);
   }
   @include fill-parent;
   position: absolute;
@@ -11,7 +12,7 @@
   text-align: center;
   background: $yellow;
   border-bottom: 1px solid $light-gray;
-  text-shadow: 1px 1px 1px lighten($yellow, 10);
+  text-shadow: 1px 1px 1px lighten($light-blue, 10);
 
   .inner {
     @include media($expanded-state) {

@@ -61,4 +61,5 @@ end
 
 group :staging, :production do
   gem "rack-timeout"
+  gem "sentry-raven"
 end

@@ -1,0 +1,90 @@
+.site-wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4rem;
+}
+
+html, body {
+ height: 100%;
+}
+
+.site-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .site-wrap:after {
+  height: 12rem;
+  @include fill-parent;
+  float: left;
+
+  @include media($large-screen) {
+    height: 4rem;
+  }
+}
+
+.footer {
+  background: lighten($light-gray, 5);
+
+  a { color: $dark-gray; }
+
+  .inner {
+    @include outer-container;
+  }
+
+  .section {
+    @include fill-parent;
+    float: left;
+    font-size: $base-font-size * 0.85;
+    line-height: 2.2em;
+
+    @include media($large-screen) {
+      @include span-columns(6);
+      padding-left: $base-spacing;
+    }
+  }
+
+  .copyright {
+    @include media($large-screen) {
+      float: left;
+    }
+
+    margin-right: 0.25em;
+    padding: 1.4em 0 1em 1em;
+  }
+
+  .footer-logo {
+    margin-bottom: 1em;
+    vertical-align: middle;
+    padding: 1.2em 0 1em 0;
+
+    @include media($large-screen) {
+      float: left;
+      margin-bottom: 0;
+    }
+
+    img {
+      height: 2.2em;
+      float: left;
+    } 
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 0;
+
+    @include media($large-screen) {
+      float: right;
+    }
+
+    li {
+      padding: 1.4em 0 1em 1em;
+
+      @include media($large-screen) {
+        @incldue fill-parent;
+        float: left;
+      }
+    }
+  }
+}

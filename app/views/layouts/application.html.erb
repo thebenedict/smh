@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
+
+  <%= favicon_link_tag "favicon.ico" %>
   <%#
     Configure default and controller-, and view-specific titles in
     config/locales/en.yml. For more see:
@@ -14,9 +16,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <%= render "top_nav" %>
-  <%= render "flashes" -%>
-  <%= yield %>
+  <div class="site-wrap">
+    <%= render "top_nav" %>
+    <%= render "flashes" -%>
+    <%= yield %>
+  </div>
+  <%= render "footer" -%>
   <%= render "javascript" %>
 </body>
 </html>
