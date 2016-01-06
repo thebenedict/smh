@@ -1,11 +1,11 @@
 // Typography
-@import url(https://fonts.googleapis.com/css?family=Port+Lligat+Slab);
-// @import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+
 
 $base-font-family: 'Open Sans', $helvetica;
 $heading-font-family: 'Open Sans', serif;
-$logo-font-family: 'Port Lligat Slab', serif;
+$logo-font-family: 'Fjalla One', serif;
 
 // $base-font-family: $helvetica;
 // $heading-font-family: serif;
@@ -36,6 +36,8 @@ $light-orange: #FFB24C;
 $yellow: #FFEF93;
 $light-green: #CADA5A;
 $dark-green: #606332;
+
+$light-blue: #a8b6bf;
 
 $facebook-dark-blue: #3b5998;
 $facebook-blue: #3b5998;

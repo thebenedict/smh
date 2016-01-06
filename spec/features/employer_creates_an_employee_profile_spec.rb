@@ -26,6 +26,7 @@ RSpec.feature "employer creates an employee profile" do
       page.check("Housekeeper")
       page.check("Nanny")
     end
+    fill_in("Employer recommendation", with: "Great jorb!")
 
     expect{ click_button("Save") }.to change(Employee, :count).by(1)
     expect(page).to have_css("div.employment", text: "Irini Thompson")

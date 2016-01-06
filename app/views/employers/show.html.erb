@@ -1,19 +1,17 @@
-<% if current_employer.employments.present? %>
-  <div class="content">
-<% else %>
-  <div class="content narrow">
+<div class="content">
+  <% if !current_employer.employments.present? %>
     <div class="welcome-actions">
-      <h1>Welcome <%= current_employer.first_name %>!</h1>
+      <h1>Let's get started</h1>
 
-      <p>You're ready to get started. Once you have some employees they'll appear on this page. You can get back here any time by
+      <p>Once you have employees they'll appear on this page. You can get back here any time by
       clicking on your name in the menu above.</p>
-      <p>If you're looking for staff:</p>
-      <p><%= link_to "Search and hire", employees_path, class: "button" %></p>
+      <p>Looking for staff?</p>
+      <p><%= link_to "Search for employees", employees_path, class: "button" %></p>
 
       <p>If you want to help a current employee find their next job, post a new employee profile and add your recommendation:</p> 
       <p><%= link_to "Post a profile", new_employee_path, class: "button alt-button" %></p>
     </div>
-<% end %>
+  <% end %>
 
   <div class="personal-info">
     <div class="headshot">
@@ -39,6 +37,7 @@
 
   <div class="history">
     <h2>My staff</h2>
+    <% if !current_employer.employments.present? %><p class="light">No staff yet, choose an option above</p><% end %>
     <%= render partial: "employments/list_employment", collection: current_employer.employments, as: "employment" %>
   </div>
 </div>

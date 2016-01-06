@@ -89,6 +89,16 @@ select {
   width: auto;
 }
 
+.date {
+  select {
+    display: inline-block;
+    margin-right: $base-spacing;
+    margin-bottom: $small-spacing;
+  }
+
+  .hint { display: block; }
+}
+
 // simpleform overrides and additions
 
 .simple_form {

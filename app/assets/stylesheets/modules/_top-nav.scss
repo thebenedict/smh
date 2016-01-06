@@ -11,6 +11,7 @@
   text-align: center;
   background: $yellow;
   border-bottom: 1px solid $light-gray;
+  text-shadow: 1px 1px 1px lighten($yellow, 10);
 
   .inner {
     @include media($expanded-state) {
@@ -49,7 +50,7 @@
     }
 
     @include fill-parent;
-    background: $light-green;
+    background: $light-blue;
     padding: $small-spacing;
     margin-bottom: $base-spacing;
 
@@ -84,12 +85,18 @@
 
     a { color: white;}
     
-    .logo { color: white; }
+    .logo { 
+      color: white;
+      text-shadow: 1px 1px 1px $dark-gray;
+    }
 
     li { border-right: 1px solid $light-gray; }
 
     .menu {
-      img { border: 1px solid $light-gray; }      
+      text-shadow: 1px 1px 1px $dark-gray;
+      img { 
+        border: 1px solid $light-gray;
+      }      
     }
   }
 }

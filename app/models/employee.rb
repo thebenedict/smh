@@ -49,6 +49,5 @@ class Employee < ActiveRecord::Base
 
   def employment_by(employer)
     self.employments.find_or_initialize_by(employer_id: employer.id)
-    self.employments.where(employer_id: employer.id)
   end
 end

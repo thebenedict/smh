@@ -24,9 +24,8 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(employee_params)
-    @employee.employments.first_or_initialize(employer: current_employer)
-    if @employee.save
+    params['employee']['employments_attributes']['0']['employer_id'] = current_employer.id
+    if Employee.create(employee_params)
       flash.notice = "New employee created"
       redirect_to current_employer
     else
@@ -38,6 +37,6 @@ class EmployeesController < ApplicationController
     def employee_params
       params.require(:employee).permit(:full_name, :common_name, :avatar,
         :primary_phone, :alternate_phone, :english_proficiency, :roles => [],
-        :availability => [], :employments_attributes => [:id, :start_date, :end_date, :comments])
+        :availability => [], :employments_attributes => [:id, :employer_id, :start_date, :end_date, :comments])
     end
 end

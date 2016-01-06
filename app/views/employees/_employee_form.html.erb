@@ -26,7 +26,7 @@
         start_year: Date.today.year - 10, end_year: Date.today.year,
         order: [:month, :year], discard_day: true, include_blank: true,
         hint: "leave blank if you currently employ this person" %>
-      <%= e.input :comments, label: "Employer recommendation" %>
+      <%= e.input :comments, label: "Employer recommendation", input_html: { rows: 15 } %>
       <%= e.hidden_field :id %>
     <% end %>
   </div>
