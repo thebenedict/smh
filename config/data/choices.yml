@@ -8,3 +8,7 @@ AVAILABILITY:
   - 'Full time'
   - 'Part time'
   - 'Events'
+ENGLISH:
+  'basic': 1
+  'good': 2
+  'excellent': 3

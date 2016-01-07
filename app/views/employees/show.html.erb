@@ -1,6 +1,6 @@
 <div class="content">
   <div class="personal-info">
-    <div class="headshot employee">
+    <div class="headshot employee-headshot">
       <%= image_tag @employee.avatar.url(:medium) %>
     </div>
     <div class="personal-details">
@@ -20,7 +20,7 @@
       </div>
       <div class="row">
         <div class="label">English skills:</div>
-        <div class="value"><%= @employee.english_proficiency %></div>
+        <div class="value"><%= @employee.english_proficiency_display %></div>
       </div>
     </div>
 

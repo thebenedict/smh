@@ -31,14 +31,14 @@
       max-height: 10.2rem;
     }
 
-    &.employee {
+    &.employee-headshot {
       img { border-radius: 50%; }
     }
   }
 
   .personal-details {
     @include media($large-viewport) {
-      @include span-columns(6 of 12);
+      @include span-columns(8 of 12);
       padding-left: $base-spacing;
     }
 
@@ -55,13 +55,13 @@
 
   .label {
     @include media($large-viewport) {
-      @include span-columns(4 of 12);
+      @include span-columns(5 of 12);
     }
   }
 
   .value {
     @include media($large-viewport) {
-      @include span-columns(5 of 12);
+      @include span-columns(7 of 12);
     }
 
     color: $dark-orange;

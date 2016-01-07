@@ -20,7 +20,7 @@
 
 class Employee < ActiveRecord::Base
   CHOICES = YAML.load_file("#{Rails.root}/config/data/choices.yml")
-  enum english_proficiency: [:basic, :good, :excellent]
+  enum english_proficiency: CHOICES["ENGLISH"]
 
   has_many :employments, inverse_of: :employee
   has_many :employers, through: :employments
@@ -40,7 +40,7 @@ class Employee < ActiveRecord::Base
   end
 
   def availability_list
-    availability.join(LIST_SEPARATOR)
+    availability.reject { |a| a.blank? }.join(LIST_SEPARATOR)
   end
 
   def phone_list
@@ -49,5 +49,9 @@ class Employee < ActiveRecord::Base
 
   def employment_by(employer)
     self.employments.find_or_initialize_by(employer_id: employer.id)
+  end
+
+  def english_proficiency_display
+    (self.english_proficiency || "Not provided").humanize
   end
 end
