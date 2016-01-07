@@ -12,6 +12,17 @@ RSpec.feature "employer creates an employee profile" do
     expect(page).to have_css("h1", text: "New employee")
   end
 
+  scenario "they view the employee form from their profile page" do
+    employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
+    employer.user.confirm
+    login_as(employer.user)
+
+    visit employer_path(employer)
+    click_on "New staff profile"
+
+    expect(page).to have_css("h1", text: "New employee")
+  end
+
   scenario "they create an employee" do
     employer = create(:employer, first_name: "Jane", full_name: "Jane Employerton")
     employer.user.confirm
