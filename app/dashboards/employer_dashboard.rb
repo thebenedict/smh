@@ -13,7 +13,7 @@ class EmployerDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     id: Field::Number,
     first_name: Field::String,
-    other_names: Field::String,
+    full_name: Field::String,
     organization: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
