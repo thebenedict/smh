@@ -37,17 +37,20 @@ class User < ActiveRecord::Base
   before_save { build_employer unless employer }
 
   def self.find_or_create_from_auth_hash(auth)
-    user = where(provider: auth.provider, uid: auth.uid).first_or_create! do |u|
-      u.email = auth.info.email
-      u.password = Devise.friendly_token[0,20]
-      u.skip_confirmation!
-    end
+    user = User.find_or_initialize_by(email: auth.info.email)
 
-    user.employer.update(
-      first_name: auth.info.first_name,
-      full_name: auth.info.name,
-      hosted_avatar_url: auth.info.image
-    )
+    if !user.persisted?
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.skip_confirmation!
+      user.save
+
+      user.employer.update(
+        first_name: auth.info.first_name,
+        full_name: auth.info.name,
+        hosted_avatar_url: auth.info.image
+      )
+    end
 
     return user
   end
