@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-  def create
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def facebook
     @user = User.find_or_create_from_auth_hash(auth_hash)
     if @user.sign_in_count == 0
       flash.notice = "Welcome #{@user.employer.first_name}! Complete your profile below to get started"
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     sign_in_and_redirect(@user)
   end
 
-  def auth_failure
+  def failure
     render "pages/auth_failure"
   end
 

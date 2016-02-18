@@ -9,26 +9,21 @@ RSpec.feature "User logs in" do
     end
   end
 
-  # scenario "they see the log in link" do
-  #   visit root_path
+  scenario "they sign in with facebook" do
+    visit root_path
+    mock_auth_hash
 
-  #   expect(page).to have_link("Log in", href: new_user_session_path)
-  # end
+    click_link "sign-in-link"
+    expect(page).to have_css("li", text: "Mockfirstname")
+    expect(page.find('#current-employer-avatar')['src']).to have_content "mock_user_thumbnail_url"
+    expect(page).to have_link("Log out", href: destroy_user_session_path)
+  end
 
-  # scenario "they log in successfully" do
-  #   user = create(:user, email: "test@test.com", password: "testing123",
-  #     password_confirmation: "testing123", confirmed_at: DateTime.now)
+  it "facebook auth fails" do
+    OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+    visit root_path
 
-  #   visit root_path
-  #   click_on("Log in")
-  #   fill_in("user_email", with: "test@test.com")
-  #   fill_in("user_password", with: "testing123")
-  #   within("form#new_user") do
-  #     click_on("Log in")
-  #   end
-
-  #   expect(page).to have_css("div.flash-notice", text: "Signed in successfully.")
-  #   expect(page).to have_link("Log out", href: destroy_user_session_path)
-  #   expect(page).to have_css("li", text: user.employer.first_name)
-  # end
+    click_link "sign-in-link"
+    expect(page).to have_content("Well that didn't work")
+  end
 end

@@ -28,33 +28,25 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :lockable,
-         :validatable, :timeoutable
+         :validatable, :timeoutable, :omniauthable,
+         :omniauth_providers => [:facebook]
 
   has_one :employer, inverse_of: :user
   accepts_nested_attributes_for :employer
 
   before_save { build_employer unless employer }
 
-  def self.find_or_create_from_auth_hash(auth_hash)
-    user = User.find_by_email(auth_hash['info']['email'])
-
-    user = User.create_from_auth_hash(auth_hash) unless user.present?
-    
-    return user
-  end
-
-  def self.create_from_auth_hash(auth_hash)
-    user = User.new(
-      email: auth_hash['info']['email'],
-      password: Devise.friendly_token[0,20]
-    )
-    user.skip_confirmation!
-    user.save
+  def self.find_or_create_from_auth_hash(auth)
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create! do |u|
+      u.email = auth.info.email
+      u.password = Devise.friendly_token[0,20]
+      u.skip_confirmation!
+    end
 
     user.employer.update(
-      first_name: auth_hash['info']['first_name'],
-      full_name: auth_hash['info']['name'],
-      hosted_avatar_url: auth_hash['info']['image']
+      first_name: auth.info.first_name,
+      full_name: auth.info.name,
+      hosted_avatar_url: auth.info.image
     )
 
     return user
