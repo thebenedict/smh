@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
 
+  root "high_voltage/pages#show", id: "home"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  get '/auth/:provider/callback', to: 'sessions#create'
-  get '/auth/failure', to: 'sessions#auth_failure'
 
   resources :employees, except: :destroy
   resources :employments, except: [:index, :destroy]
