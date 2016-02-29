@@ -58,6 +58,7 @@ RSpec.feature "employer manages employees" do
     end
 
     fill_in("Primary phone", with: "4441212")
+    check("Employee consent")
     click_on("Update")
 
     expect(employee.reload.primary_phone).to eq("4441212")
@@ -74,6 +75,7 @@ RSpec.feature "employer manages employees" do
     click_link("Edit")
 
     fill_in("Primary phone", with: "4441212")
+    check("Employee consent")
     click_on("Update")
 
     expect(employee.reload.primary_phone).to eq("4441212")
@@ -89,6 +91,7 @@ RSpec.feature "employer manages employees" do
       click_link("Update")
     end
     fill_in("Employer recommendation", with: "Great jorb!")
+    check("Employee consent")
     click_on("Update")
 
     expect(employment.reload.comments).to eq("Great jorb!")

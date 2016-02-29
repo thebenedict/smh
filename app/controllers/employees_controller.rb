@@ -16,6 +16,7 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  employee_consent    :boolean          default(FALSE)
 #
 
 class EmployeesController < ApplicationController
@@ -39,16 +40,22 @@ class EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    @employee.update(employee_params)
-    redirect_to current_employer, notice: "Update successful"
+    if @employee.update_attributes(employee_params)
+      redirect_to current_employer, notice: "Update successful"
+    else
+      flash.alert = "Please correct the errors below and try again"
+      render "edit"
+    end
   end
 
   def create
     params['employee']['employments_attributes']['0']['employer_id'] = current_employer.id
-    if Employee.create(employee_params)
+    @employee = Employee.new(employee_params)
+    if @employee.save
       flash.notice = "New employee created"
       redirect_to current_employer
     else
+      flash.alert = "Please correct the errors below and try again"
       render "new"
     end
   end
@@ -56,7 +63,7 @@ class EmployeesController < ApplicationController
   private
     def employee_params
       params.require(:employee).permit(:full_name, :common_name, :avatar,
-        :primary_phone, :alternate_phone, :english_proficiency, :roles => [],
+        :primary_phone, :alternate_phone, :english_proficiency, :employee_consent, :roles => [],
         :availability => [], :employments_attributes => [:id, :employer_id, :start_date, :end_date, :comments])
     end
 end

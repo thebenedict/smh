@@ -16,6 +16,7 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  employee_consent    :boolean          default(FALSE)
 #
 
 class Employee < ActiveRecord::Base
@@ -30,6 +31,7 @@ class Employee < ActiveRecord::Base
     default_url: "no-photo.png"
      
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates :employee_consent, inclusion: { in: [true], message: "Employee consent is required" }
 
   accepts_nested_attributes_for :employments
 

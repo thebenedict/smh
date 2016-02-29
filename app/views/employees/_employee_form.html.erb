@@ -29,6 +29,7 @@
       <%= e.input :comments, label: "Employer recommendation", input_html: { rows: 15 } %>
       <%= e.hidden_field :id %>
     <% end %>
+    <%= f.input :employee_consent, input_html: { checked: false }, label: "Employee consent (required)", required: true, hint: "Please confirm that this employee has agreed to have their information posted on Staff my House." %>
   </div>
 
   <div class="form-actions">

@@ -16,12 +16,14 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  employee_consent    :boolean          default(FALSE)
 #
 
 FactoryGirl.define do
   factory :employee do
     common_name "Testnick"
     primary_phone "+2775421717654"
+    employee_consent true
   end
 
 end
