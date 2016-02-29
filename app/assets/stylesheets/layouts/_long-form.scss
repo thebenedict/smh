@@ -1,0 +1,11 @@
+.long-form {
+  h2 {
+    font-size: 1.1em;
+  }
+
+  p {
+    margin-bottom: $base-spacing;
+  }
+
+  max-width: 48em;
+}
