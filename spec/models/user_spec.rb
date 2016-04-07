@@ -23,6 +23,7 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
+#  role                   :integer
 #
 
 require 'rails_helper'

@@ -28,6 +28,7 @@ class UserDashboard < Administrate::BaseDashboard
     locked_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    role: Field::String,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -67,6 +68,7 @@ class UserDashboard < Administrate::BaseDashboard
     :failed_attempts,
     :unlock_token,
     :locked_at,
+    :role,
   ]
 
   # Overwrite this method to customize how users are displayed

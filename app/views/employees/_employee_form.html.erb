@@ -18,16 +18,18 @@
       collection: Employee.english_proficiencies.keys.to_a,
       label_method: :humanize
     %>
-    <%= f.simple_fields_for :employments, @employee.employment_by(current_employer) do |e| %>
-      <%= e.input :start_date, as: :date, required: true,
-        start_year: Date.today.year - 10, end_year: Date.today.year,
-        order: [:month, :year], discard_day: true %>
-      <%= e.input :end_date, as: :date,
-        start_year: Date.today.year - 10, end_year: Date.today.year,
-        order: [:month, :year], discard_day: true, include_blank: true,
-        hint: "leave blank if you currently employ this person" %>
-      <%= e.input :comments, label: "Employer recommendation", input_html: { rows: 15 } %>
-      <%= e.hidden_field :id %>
+    <% if current_user.role != "admin" %>
+      <%= f.simple_fields_for :employments, @employee.employment_by(current_employer) do |e| %>
+        <%= e.input :start_date, as: :date, required: true,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true %>
+        <%= e.input :end_date, as: :date,
+          start_year: Date.today.year - 10, end_year: Date.today.year,
+          order: [:month, :year], discard_day: true, include_blank: true,
+          hint: "leave blank if you currently employ this person" %>
+        <%= e.input :comments, label: "Employer recommendation", input_html: { rows: 15 } %>
+        <%= e.hidden_field :id %>
+      <% end %>
     <% end %>
     <%= f.input :employee_consent, input_html: { checked: false }, label: "Employee consent (required)", required: true, hint: "Please confirm that this employee has agreed to have their information posted on Staff my House." %>
   </div>

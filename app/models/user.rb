@@ -23,6 +23,7 @@
 #  updated_at             :datetime         not null
 #  provider               :string
 #  uid                    :string
+#  role                   :integer
 #
 
 class User < ActiveRecord::Base
@@ -37,6 +38,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :employer
 
   before_save { build_employer unless employer }
+
+  enum role: {
+    admin: 9,
+  }
 
   def self.find_or_create_from_auth_hash(auth)
     user = User.find_or_initialize_by(email: auth.info.email)
