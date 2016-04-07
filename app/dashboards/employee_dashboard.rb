@@ -17,9 +17,10 @@ class EmployeeDashboard < Administrate::BaseDashboard
     alternate_phone: Field::String,
     availability: Field::Text,
     roles: Field::Text,
-    english_proficiency: Field::Number,
+    english_proficiency: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    employee_consent: Field::Boolean,
   }
 
   # COLLECTION_ATTRIBUTES
@@ -42,7 +43,6 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :employments,
     :employers,
     :full_name,
     :common_name,
@@ -51,12 +51,13 @@ class EmployeeDashboard < Administrate::BaseDashboard
     :availability,
     :roles,
     :english_proficiency,
+    :employee_consent,
   ]
 
   # Overwrite this method to customize how employees are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(employee)
-  #   "Employee ##{employee.id}"
-  # end
+  def display_resource(employee)
+    "#{employee.full_name} (#{employee.id})"
+  end
 end

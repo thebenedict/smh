@@ -16,13 +16,22 @@
 #  submitted_avatar_updated_at   :datetime
 #
 
+class AdminCreatedUser
+  def email
+    ""
+  end
+
+  def id
+    -1
+  end
+end
+
 class Employer < ActiveRecord::Base
   has_many :employments, inverse_of: :employer
   has_many :employees, through: :employments
 
   belongs_to :user, inverse_of: :employer;
 
-  validates :user, presence: true
   validates :first_name, presence: true
   validates :full_name, presence: true
 
@@ -45,5 +54,13 @@ class Employer < ActiveRecord::Base
 
   def organization_display
     self.organization.present? ? self.organization : "organization not provided"
+  end
+
+  def user_email
+    self.user.email
+  end
+
+  def user
+    super || AdminCreatedUser.new
   end
 end
